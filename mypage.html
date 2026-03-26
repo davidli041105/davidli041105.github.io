@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hanzhe Li — Academic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<script>
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  CONFIGURATION — EDIT ALL YOUR INFO HERE, IN ONE PLACE           ║
+// ║  The entire website reads from this single CONFIG object.        ║
+// ║  After editing, just save the file and refresh the browser.      ║
+// ╚══════════════════════════════════════════════════════════════════╝
+
+const CONFIG = {
+
+  // ── BASIC INFO ──────────────────────────────────────────────────
+  name:        "Hanzhe Li",
+  nameZh:      "李瀚哲",
+  tagline:     "B.Eng. Candidate & Ph.D. Applicant",
+  year:        "2027",            // target PhD enrollment year
+  portfolio_year: "2026",         // current year for footer
+
+  heroDescription:
+    `Third-year undergraduate in Artificial Intelligence at Xi'an Jiaotong
+     University. Research interests in machine learning, reinforcement
+     learning, computer vision, and explainable AI. Seeking Ph.D.
+     opportunities for Fall 2027.`,
+
+  // ── LINKS (leave "" to hide any link) ───────────────────────────
+  email:         "davidli041105@outlook.com" ,              // e.g. "hanzhe@stu.xjtu.edu.cn"
+  github:        "",              // e.g. "https://github.com/username"
+  scholar:       "",              // Google Scholar URL
+  linkedin:      "http://linkedin.com/in/hanzhe-li-01984b3a3",              // LinkedIn URL
+  twitter:       "",              // Twitter / X URL
+  cvFile:        "cv.pdf",        // path to downloadable CV
+
+  // ── ABOUT ───────────────────────────────────────────────────────
+  aboutParagraphs: [
+    `I am a third-year undergraduate student in the AI Honors Program at
+     Xi'an Jiaotong University (XJTU), College of Artificial Intelligence,
+     pursuing a B.Eng. in Artificial Intelligence (expected June 2027).
+     I am actively seeking Ph.D. positions starting Fall 2027.`,
+
+    `My research spans machine learning, deep learning, computer vision,
+     and explainable AI. I am particularly drawn to reinforcement learning
+     and its application to real-world systems. My current work involves
+     applying offline RL methods to active IPv6 address generation and
+     exploring AI interpretability.`,
+
+    `Outside of research, I enjoy sports, music, and traveling.`
+  ],
+
+  // ── RESEARCH INTERESTS ──────────────────────────────────────────
+  interests: [
+    {
+      title: "Reinforcement Learning",
+      desc:  "Offline RL, reward shaping, policy optimization, and applications to engineering fields and autonomous systems, such as network analysis"
+    },
+    {
+      title: "Machine Learning",
+      desc:  "Generative modeling, ensemble methods, and prediction for scientific research."
+    },
+    {
+      title: "Explainable AI",
+      desc:  "Interpretability of deep learning models, understanding learned representations, and locating defects."
+    },
+    {
+      title: "Computer Vision",
+      desc:  "Deep learning for visual recognition, generative models, and representation learning."
+    }
+  ],
+
+  // ── EDUCATION ───────────────────────────────────────────────────
+  education: [
+    {
+      years:   "2023 — 2027",
+      degree:  "B.Eng. in Artificial Intelligence",
+      school:  "Xi'an Jiaotong University (XJTU) · Xi'an, China",
+      details: "AI Honors Program, College of Artificial Intelligence",
+      extra:   "GPA: 3.83 / 4.0 (89.52 / 100) · Stand:"
+    }
+  ],
+
+  // ── SELECTED COURSEWORK ─────────────────────────────────────────
+  // Grouped by category. Each course: [name, score, gpa]
+  coursework: [
+    {
+      category: "Mathematics",
+      courses: [
+        ["Linear Algebra & Analytical Geometry I",     95, 4.3],
+        ["Mathematical Analysis for Engineering I",    93, 4.0],
+        ["Mathematical Analysis for Engineering II",   95, 4.3],
+        ["Complex Analysis & Integral Transformation", 97, 4.3],
+        ["Math Foundation of CS & AI I",               94, 4.0],
+        ["Math Foundation of CS & AI II",              92, 4.0],
+        ["Probability Theory & Stochastic Process",    86, 3.7],
+      ]
+    },
+    {
+      category: "AI & Machine Learning",
+      courses: [
+        ["Computer Programming",                       97, 4.3],
+        ["Introduction to Artificial Intelligence",    94, 4.0],
+        ["Machine Learning",                           91, 4.0],
+        ["Natural Language Processing",                92, 4.0],
+        ["Physics for Artificial Intelligence I",      98, 4.3],
+        ["Physics for Artificial Intelligence II",     88, 3.7],
+        ["Deep Learning Tools & Platform",             87, 3.7],
+        ["Computer Vision & Pattern Recognition",      86, 3.7],
+      ]
+    },
+    {
+      category: "Systems & Signal Processing",
+      courses: [
+        ["Digital Signal Processing",                  95, 4.3],
+        ["Computational Neural Engineering",           92, 4.0],
+        ["Modern Control Engineering",                 86, 3.7],
+        ["Computer Architecture",                      81, 3.3],
+        ["Electronic Technology & System",             83, 3.3],
+      ]
+    },
+    {
+      category: "Interdisciplinary",
+      courses: [
+        ["Frontiers in Bioinformation Technology",     "A+", 4.3],
+        ["Game Theory",                                85, 3.7],
+        // ["Introduction to Cognitive Psychology",       83, 3.3],
+        // ["Brain Signal Processing",                    84, 3.3],
+      ]
+    }
+  ],
+
+  // ── RESEARCH EXPERIENCE ─────────────────────────────────────────
+  research: [
+    {
+      years:   "2025 — Present",
+      title:   "6Vision Image-encoding-based IPv6 Target Generation in Few-seed Scenarios via Offline Reinforcement Learning",
+      lab:     "NOM LAB, Tsinghua University",
+      advisor: "",                 // e.g. "Prof. Zhang"
+      desc:    "Developing a system combining GatedPixelCNN with offline Reinforcement Learning framework to generate active IPv6 addresses in few-seed scenarios, modeling addresses as 8×128 binary matrices.",
+      bullets: [
+        "Designed probe-based reward signals (+10.0 active, −5.0 alias, −1.0 unprobed) for RL fine-tuning",
+        "Implemented KL divergence constraints against a frozen reference model to prevent policy collapse",
+        "Engineered BGP prefix-aware generation with bit-level prefix locking and ASN filtering via pyasn",
+        "Addressed negative reward dominance via weighted random oversampling for active address samples",
+        "Built serial cluster-based generation pipeline with cross-cluster deduplication"
+      ]
+    },
+    {
+      years:   "2025 - Present",
+      title:   "Regression Modeling for Larval Heat Lethality Prediction",
+      lab:     "Dept. of Biological and Agricultural Engineering, University of California Davis",
+      advisor: "",
+      desc:    "Constructed customized and automated image processing pipeline via OpenCV and developed predictive ML models for larval heat lethality (~250 samples, 8 features) with careful attention to feature collinearity and small-sample robustness.",
+      bullets: [
+        "Compared LightGBM, SVR, ElasticNet, GPR, Ridge, CatBoost, and XGBoost with rigorous cross-validation",
+        "Developed an interactive EDA dashboard for exploratory data analysis",
+        "Identified and addressed near-perfect correlation between temperature features (T1/T2)",
+        "Explored ensemble stacking to improve prediction reliability"
+      ]
+    },
+    // Uncomment and fill to add more:
+    // {
+    //   years: "Year",
+    //   title: "Project Title",
+    //   lab:   "Lab Name",
+    //   advisor: "Prof. X",
+    //   desc:  "Brief description.",
+    //   bullets: ["Point 1", "Point 2"]
+    // },
+  ],
+
+  // ── PROJECTS & PUBLICATIONS ─────────────────────────────────────
+  projects: [
+    {
+      tag:   "Research · 2024–Present",
+      title: "RL-based IPv6 Address Generator",
+      desc:  "GatedPixelCNN fine-tuned with offline RL for active IPv6 address discovery. Features probe-based rewards, KL-constrained policy updates, and BGP-aware generation.",
+      link:  "",
+      linkText: "Code / Paper →"
+    },
+    {
+      tag:   "Presentation · 2025",
+      title: "AD-R1: Closed-Loop RL for Autonomous Driving",
+      desc:  "Prepared and delivered a research sharing session on AD-R1, a closed-loop reinforcement learning system for autonomous driving decision-making.",
+      link:  "",
+      linkText: "Slides →"
+    },
+    // Add more:
+    {
+      tag: "Research · 2024",
+      title: "Word Frequency Counting Based on Serverless MapReduce",
+      desc: "Optimized word frequency counting using a serverless MapReduce framework, identifying optimal Map/Reduce function configurations to reduce execution time and improve computational efficiency through extensive experimentation",
+      link: "https://arxiv.org/abs/2601.00380",
+      linkText: "Paper →"
+    },
+    
+    // Add more:
+    // {
+    //   tag: "Type · Year",
+    //   title: "Name",
+    //   desc: "Description.",
+    //   link: "https://...",
+    //   linkText: "View →"
+    // },
+  ],
+
+  // ── SKILLS ──────────────────────────────────────────────────────
+  skills: [
+    { category: "Programming",    items: ["Python", "C / C++", "MATLAB", "HTML / CSS / JS"] },
+    { category: "ML / DL",        items: ["PyTorch", "Scikit-learn", "LightGBM / XGBoost / CatBoost", "Pandas / NumPy"] },
+    { category: "Tools",          items: ["Git / GitHub", "LaTeX", "Linux / Bash", "Docker"] },
+    { category: "Research",       items: ["Literature Review", "Experimental Design", "Statistical Analysis", "Technical Writing"] },
+    { category: "Languages",      items: ["English (Fluent)", "中文（母语）"] },
+    { category: "Domain",         items: ["IPv6 / BGP / pyasn", "Network Measurement", "Data Visualization"] },
+  ],
+};
+
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  END OF CONFIG — YOU DON'T NEED TO EDIT ANYTHING BELOW         ║
+// ╚══════════════════════════════════════════════════════════════════╝
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1a1a;
+  --body: #3a3a3a;
+  --mid: #666;
+  --light: #9a9a9a;
+  --faint: #c8c8c8;
+  --rule: #e2e0dc;
+  --bg: #f8f7f4;
+  --card: #ffffff;
+  --accent: #2d5a3d;
+  --accent-light: #e8f0eb;
+  --warm: #f5f0e8;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --mono: 'JetBrains Mono', 'Menlo', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 4rem;
+  background: rgba(248,247,244,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+
+.nav-name {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 600;
+  letter-spacing: 0.01em; color: var(--ink); text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none; transition: color 0.25s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1px; background: var(--accent); transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+
+main { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 5rem 0 3rem; }
+
+#hero { padding-top: 11rem; padding-bottom: 4rem; }
+
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 300;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+
+h1 {
+  font-size: clamp(2.6rem, 5.5vw, 3.8rem); font-weight: 500;
+  line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 1.6rem;
+}
+h1 em {
+  font-style: italic; font-weight: 400; color: var(--mid);
+  display: block; font-size: 0.62em; margin-top: 0.3em;
+}
+
+.hero-desc { font-size: 1.12rem; color: var(--body); max-width: 560px; line-height: 1.8; }
+
+.hero-links { margin-top: 2.6rem; display: flex; gap: 1.8rem; flex-wrap: wrap; }
+.hero-links a {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.06em; color: var(--ink); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1.5px solid var(--ink);
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+.section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+.section-title {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--rule); }
+
+.about-text p { font-size: 1.05rem; color: var(--body); margin-bottom: 1.1rem; max-width: 660px; }
+
+.interests-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+}
+.interest-item { background: var(--bg); padding: 1.5rem 1.6rem; transition: background 0.3s; }
+.interest-item:hover { background: var(--warm); }
+.interest-item h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+.interest-item p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+
+.entry { display: grid; grid-template-columns: 130px 1fr; gap: 0.8rem 2.4rem; margin-bottom: 2.8rem; align-items: start; }
+.entry-year { font-family: var(--mono); font-size: 0.72rem; font-weight: 300; color: var(--light); letter-spacing: 0.03em; padding-top: 0.22rem; }
+.entry-body h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.15rem; color: var(--ink); }
+.entry-body .sub { font-size: 0.9rem; color: var(--mid); margin-bottom: 0.5rem; }
+.entry-body p { font-size: 0.9rem; color: var(--body); line-height: 1.65; }
+.entry-body .extra { font-family: var(--mono); font-size: 0.76rem; color: var(--mid); margin-top: 0.2rem; letter-spacing: 0.02em; }
+.entry-body ul { list-style: none; margin-top: 0.5rem; }
+.entry-body ul li {
+  font-size: 0.88rem; color: var(--body); line-height: 1.6;
+  padding: 0.18rem 0 0.18rem 1.1rem; position: relative;
+}
+.entry-body ul li::before {
+  content: ''; position: absolute; left: 0; top: 0.72em;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--faint);
+}
+
+.coursework-group { margin-bottom: 2.2rem; }
+.coursework-group h4 {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule);
+}
+.course-table { width: 100%; border-collapse: collapse; }
+.course-table td { font-size: 0.88rem; padding: 0.38rem 0; border-bottom: 1px solid rgba(0,0,0,0.04); vertical-align: baseline; }
+.course-table td:first-child { color: var(--body); padding-right: 1rem; }
+.course-table td:nth-child(2) { font-family: var(--mono); font-size: 0.78rem; color: var(--mid); text-align: right; width: 60px; }
+.course-table td:nth-child(3) { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; text-align: right; width: 50px; }
+.gpa-high { color: var(--accent); }
+.gpa-good { color: var(--body); }
+
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.project-card {
+  border: 1px solid var(--rule); padding: 1.6rem; background: var(--card);
+  transition: border-color 0.3s, transform 0.2s;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.project-tag {
+  font-family: var(--mono); font-size: 0.64rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 0.7rem;
+}
+.project-card h3 { font-family: var(--serif); font-size: 1.02rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+.project-card p { font-size: 0.86rem; color: var(--mid); line-height: 1.6; }
+.project-card a {
+  display: inline-block; margin-top: 1rem; font-family: var(--mono);
+  font-size: 0.7rem; letter-spacing: 0.05em; color: var(--accent);
+  text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.project-card a:hover { border-color: var(--accent); }
+.project-card a.disabled { color: var(--faint); pointer-events: none; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 3rem; }
+.skill-group h4 {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;
+}
+.skill-group ul { list-style: none; }
+.skill-group li { font-size: 0.88rem; color: var(--body); padding: 0.28rem 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+
+.contact-intro { font-size: 1.02rem; color: var(--body); max-width: 520px; margin-bottom: 2rem; }
+.contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
+.contact-row { display: flex; align-items: center; gap: 1.4rem; }
+.contact-label {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); width: 70px; flex-shrink: 0;
+}
+.contact-row a {
+  font-size: 0.94rem; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.contact-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+footer {
+  border-top: 1px solid var(--rule); padding: 2.5rem 2rem; text-align: center;
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 300;
+  letter-spacing: 0.06em; color: var(--light); max-width: 800px; margin: 0 auto;
+}
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 700px) {
+  nav { padding: 0.9rem 1.2rem; }
+  .nav-links { gap: 0.9rem; }
+  .nav-links a { font-size: 0.6rem; }
+  main { padding: 0 1.1rem; }
+  .entry { grid-template-columns: 1fr; gap: 0.3rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .interests-grid { grid-template-columns: 1fr; gap: 0; }
+  h1 { font-size: 2.4rem; }
+}
+</style>
+
+<nav id="navbar">
+  <a class="nav-name" href="#hero" id="nav-name-link"></a>
+  <ul class="nav-links" id="nav-links"></ul>
+</nav>
+
+<main id="main-content"></main>
+<footer id="footer"></footer>
+
+<script>
+// ── PAGE RENDERER (reads CONFIG, builds entire page) ──────────────
+(function render() {
+  const C = CONFIG;
+
+  // Nav name
+  document.getElementById('nav-name-link').textContent = C.name;
+
+  // Nav links
+  const sections = ['About','Interests','Education','Coursework','Research','Projects','Skills','Contact'];
+  const navUl = document.getElementById('nav-links');
+  sections.forEach(s => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#${s.toLowerCase()}">${s}</a>`;
+    navUl.appendChild(li);
+  });
+
+  // Helpers
+  const h = (tag, cls, html) => {
+    const el = document.createElement(tag);
+    if (cls) el.className = cls;
+    if (html !== undefined) el.innerHTML = html;
+    return el;
+  };
+  const sectionHeader = (title) =>
+    `<div class="section-header"><span class="section-title">${title}</span><span class="section-line"></span></div>`;
+
+  const main = document.getElementById('main-content');
+
+  // ── HERO ──
+  const heroLinks = [];
+  if (C.email)   heroLinks.push(`<a href="mailto:${C.email}">Email</a>`);
+  if (C.github)  heroLinks.push(`<a href="${C.github}" target="_blank">GitHub</a>`);
+  if (C.scholar) heroLinks.push(`<a href="${C.scholar}" target="_blank">Scholar</a>`);
+  if (C.cvFile)  heroLinks.push(`<a href="${C.cvFile}" target="_blank">Download CV</a>`);
+  const hero = h('section','','');
+  hero.id = 'hero';
+  hero.innerHTML = `
+    <p class="hero-eyebrow">Ph.D. Applicant · Fall ${C.year}</p>
+    <h1>${C.name}<em>${C.tagline}</em></h1>
+    <p class="hero-desc">${C.heroDescription.replace(/\n\s*/g,' ')}</p>
+    ${heroLinks.length ? `<div class="hero-links">${heroLinks.join('')}</div>` : ''}`;
+  main.appendChild(hero);
+
+  // ── ABOUT ──
+  const about = h('section','reveal','');
+  about.id = 'about';
+  about.innerHTML = sectionHeader('About') +
+    `<div class="about-text">${C.aboutParagraphs.map(p=>`<p>${p.replace(/\n\s*/g,' ')}</p>`).join('')}</div>`;
+  main.appendChild(about);
+
+  // ── INTERESTS ──
+  const interests = h('section','reveal','');
+  interests.id = 'interests';
+  interests.innerHTML = sectionHeader('Research Interests') +
+    `<div class="interests-grid">${C.interests.map(i=>
+      `<div class="interest-item"><h4>${i.title}</h4><p>${i.desc}</p></div>`).join('')}</div>`;
+  main.appendChild(interests);
+
+  // ── EDUCATION ──
+  const edu = h('section','reveal','');
+  edu.id = 'education';
+  edu.innerHTML = sectionHeader('Education') + C.education.map(e=>`
+    <div class="entry">
+      <div class="entry-year">${e.years}</div>
+      <div class="entry-body">
+        <h3>${e.degree}</h3>
+        <p class="sub">${e.school}</p>
+        <p>${e.details}</p>
+        ${e.extra ? `<p class="extra">${e.extra}</p>` : ''}
+      </div>
+    </div>`).join('');
+  main.appendChild(edu);
+
+  // ── COURSEWORK ──
+  const cw = h('section','reveal','');
+  cw.id = 'coursework';
+  const gpaClass = (g) => g >= 4.0 ? 'gpa-high' : 'gpa-good';
+  cw.innerHTML = sectionHeader('Selected Coursework') + C.coursework.map(group=>`
+    <div class="coursework-group">
+      <h4>${group.category}</h4>
+      <table class="course-table">
+        ${group.courses.map(([name,score,gpa])=>`
+          <tr>
+            <td>${name}</td>
+            <td>${score}</td>
+            <td class="${gpaClass(gpa)}">${typeof gpa === 'number' ? gpa.toFixed(1) : gpa}</td>
+          </tr>`).join('')}
+      </table>
+    </div>`).join('');
+  main.appendChild(cw);
+
+  // ── RESEARCH ──
+  const res = h('section','reveal','');
+  res.id = 'research';
+  res.innerHTML = sectionHeader('Research & Experience') + C.research.map(r=>{
+    const sub = [r.lab];
+    if (r.advisor) sub.push(`Advisor: ${r.advisor}`);
+    return `
+      <div class="entry">
+        <div class="entry-year">${r.years}</div>
+        <div class="entry-body">
+          <h3>${r.title}</h3>
+          <p class="sub">${sub.join(' · ')}</p>
+          <p>${r.desc}</p>
+          ${r.bullets?.length ? `<ul>${r.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+  main.appendChild(res);
+
+  // ── PROJECTS ──
+  const proj = h('section','reveal','');
+  proj.id = 'projects';
+  proj.innerHTML = sectionHeader('Projects & Publications') +
+    `<div class="project-grid">${C.projects.map(p=>`
+      <div class="project-card">
+        <p class="project-tag">${p.tag}</p>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        ${p.link ? `<a href="${p.link}" target="_blank">${p.linkText}</a>` :
+                   `<a class="disabled">${p.linkText||'Coming soon →'}</a>`}
+      </div>`).join('')}</div>`;
+  main.appendChild(proj);
+
+  // ── SKILLS ──
+  const sk = h('section','reveal','');
+  sk.id = 'skills';
+  sk.innerHTML = sectionHeader('Skills') +
+    `<div class="skills-grid">${C.skills.map(s=>`
+      <div class="skill-group">
+        <h4>${s.category}</h4>
+        <ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+      </div>`).join('')}</div>`;
+  main.appendChild(sk);
+
+  // ── CONTACT ──
+  const ct = h('section','reveal','');
+  ct.id = 'contact';
+  const rows = [];
+  if (C.email)    rows.push(['Email',   `mailto:${C.email}`, C.email]);
+  if (C.github)   rows.push(['GitHub',  C.github, C.github.replace('https://','')]);
+  if (C.scholar)  rows.push(['Scholar', C.scholar, 'Google Scholar Profile']);
+  if (C.linkedin) rows.push(['LinkedIn',C.linkedin, C.linkedin.replace('https://','')]);
+  if (C.twitter)  rows.push(['Twitter', C.twitter, C.twitter.replace(/https:\/\/(twitter|x)\.com\//,'@')]);
+  ct.innerHTML = sectionHeader('Contact') +
+    `<p class="contact-intro">Actively seeking Ph.D. positions for Fall ${C.year}. Open to research collaborations and academic discussions — feel free to reach out.</p>` +
+    (rows.length ? `<div class="contact-links">${rows.map(([l,href,txt])=>
+      `<div class="contact-row"><span class="contact-label">${l}</span><a href="${href}" ${href.startsWith('mailto')?'':'target="_blank"'}>${txt}</a></div>`).join('')}</div>` :
+      `<p style="font-size:0.9rem;color:var(--light);font-style:italic;">Add your contact links in the CONFIG at the top of this file.</p>`);
+  main.appendChild(ct);
+
+  // ── FOOTER ──
+  document.getElementById('footer').innerHTML =
+    `<p>&copy; ${C.portfolio_year} ${C.name} &middot; Built with HTML &amp; CSS</p>`;
+
+  // ── SCROLL EFFECTS ──
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+})();
+</script>
+</body>
+</html>
